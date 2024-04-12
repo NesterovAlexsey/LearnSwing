@@ -12,6 +12,12 @@ public class BookGroupWindow extends JFrame {
   private JTextField descriptionTextField;
   private JTextField assessmentTextField;
 
+  private void clearFields() {
+    groupNameTextField.setText("");
+    descriptionTextField.setText("");
+    assessmentTextField.setText("");
+  }
+
   public BookGroupWindow() {
     setTitle("Book Group");
     setSize(400, 200);
@@ -41,31 +47,35 @@ public class BookGroupWindow extends JFrame {
     saveButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        saveData();
+        // Создаем DTO на основе данных из текстовых полей
+        String groupName = groupNameTextField.getText();
+        String groupDescription = descriptionTextField.getText();
+        int assessment = Integer.parseInt(assessmentTextField.getText());
+
+        BookGroupDTO dto = new BookGroupDTO(groupName, groupDescription, assessment);
+
+        // Вызываем метод save сервисного класса для сохранения DTO
+        BookGroupService.save(dto);
+
+        // Очищаем поля после сохранения
+        clearFields();
       }
     });
 
     cancelButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        //Метод dispose() вызывается у окна JFrame и используется для закрытия этого окна и
+        // освобождения всех связанных с ним ресурсов.
         dispose();
       }
     });
 
+    //добавляет панель panel на фрейм (окно).
     add(panel);
+
+    //устанавливает флаг видимости фрейма на true, что делает его видимым на экране.
     setVisible(true);
-  }
-
-  private void saveData() {
-    String groupName = groupNameTextField.getText();
-    String description = descriptionTextField.getText();
-    int assessment = Integer.parseInt(assessmentTextField.getText());
-
-    // Создание объекта DTO и передача его в слой сервиса для сохранения в базу данных
-    BookGroupDTO dto = new BookGroupDTO(groupName, description, assessment);
-    BookGroupService.save(dto);
-
-    dispose(); // Закрытие окна после сохранения данных
   }
 
   public static void main(String[] args) {
@@ -86,11 +96,23 @@ class BookGroupDTO {
     this.assessment = assessment;
     this.creationDate = LocalDateTime.now();
   }
+
+  public String getGroupName() {
+    return groupName;
+  }
+
+  public String getGroupDescription() {
+    return description;
+  }
+
+  public int getAssessment() {
+    return assessment;
+  }
 }
 
 class BookGroupService {
   public static void save(BookGroupDTO dto) {
-    // Реализация сохранения DTO в базу данных
+    System.out.printf("Save data name: %s, description: %s, assessment: %s", dto.getGroupName(), dto.getGroupDescription(), dto.getAssessment());
   }
 }
 
