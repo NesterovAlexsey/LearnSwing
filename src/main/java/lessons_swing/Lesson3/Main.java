@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.EventHandler;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,9 +26,11 @@ public class Main {
       }
     });
 
+    var button = new JButton("Events");
+    jPanel.add(button);
+    //
+    button.addActionListener(EventHandler.create(ActionListener.class, jFrame, "title", "source.text"));
   }
-
-
   static JFrame getFrame() {
     var jFrame = new JFrame() {};
     jFrame.setVisible(true);
