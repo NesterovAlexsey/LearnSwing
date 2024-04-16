@@ -4,8 +4,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.LinearGradientPaint;
 import java.awt.Toolkit;
+import java.awt.geom.Line2D;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -20,12 +23,20 @@ public class Lesson2 {
   static class MyComponent extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
-      Font font = new Font("Bitstream Charter", Font.BOLD, 20);
+
+      Font font = new Font("Verdana", Font.BOLD, 20);
+
+      //------------Check the list of possible fonts
+      //String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment()
+      //        .getAvailableFontFamilyNames();
+      //for(String eachFond : fonts)
+      //System.out.println(eachFond);
+
       Graphics2D g2 = (Graphics2D) g;
       g2.setFont(font);
       g2.drawString("My picture", 50, 50);
-      Image image = new ImageIcon("C:\\Users\\AIT TR Student\\work\\SwingLearning\\src\\main\\java\\lessons_swing\\Lesson2\\Lake.jpg").getImage();
-      g2.drawImage(image, 150, 50, null);
+      Line2D image = new Line2D.Double(70,70,90,90);
+      g2.draw(image);
     }
   }
 
