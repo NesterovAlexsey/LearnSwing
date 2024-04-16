@@ -21,6 +21,7 @@ public class Main {
       @Override
       public void actionPerformed(ActionEvent e) {
         jPanel.setBackground(Color.GREEN);
+        jFrame.setTitle(((JButton)e.getSource()).getText());
       }
     });
 
