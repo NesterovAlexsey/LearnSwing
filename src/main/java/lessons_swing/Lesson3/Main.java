@@ -1,7 +1,10 @@
 package lessons_swing.Lesson3;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,9 +15,17 @@ public class Main {
     JFrame jFrame = getFrame();
     JPanel jPanel = new JPanel();
     jFrame.add(jPanel);
-    jPanel.add(new JButton("submit"));
+    var jButton = new JButton("submit");
+    jPanel.add(jButton);
+    jButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        jPanel.setBackground(Color.GREEN);
+      }
+    });
 
   }
+
 
   static JFrame getFrame() {
     var jFrame = new JFrame() {};
