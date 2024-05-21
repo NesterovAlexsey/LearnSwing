@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24f9fea1-315f-4043-ac6c-f11479f4ab71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lessons_swing/Lesson8_KeyStroke.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lessons_swing/Lesson8_KeyStroke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lessons_swing/Lesson8_KeyStroke.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
